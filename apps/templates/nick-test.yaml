@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: ncote-web-app
   namespace: ncote-test
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: ncote-test
