@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ncote-web-app
+  namespace: ncote-test
+  labels:
+    group: ncote-web-app
+  annotations:
+    cert-manager.io/cluster-issuer: "incommon"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - ncote-web-app.k8s.ucar.edu
+      secretName: incommon-account-key-ncote-web-app
+  rules:
+  - host: ncote-web-app.k8s.ucar.edu
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ncote-web-app
+            port:
+              number: 5006

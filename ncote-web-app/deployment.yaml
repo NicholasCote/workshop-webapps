@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ncote-web-app
+  namespace: ncote-test
+  labels:
+    app: ncote-web-app
+    group: ncote-web-app
+spec:
+  selector:
+    matchLabels:
+      app: ncote-web-app
+  template:
+    metadata:
+      labels:
+        app: ncote-web-app
+    spec:
+      containers:
+      - name: ncote-web-app
+        image: docker.io/ncging/workshop-webapp:2024-08-06.15.51
+        resources:
+          limits:
+            memory: 4G
+            cpu: 1
+        ports:
+        - containerPort: 5006

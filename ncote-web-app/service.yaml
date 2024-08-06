@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ncote-web-app
+  namespace: ncote-test
+  labels:
+    group: ncote-web-app
+spec:
+  ports:
+  - port: 5006
+  selector:
+    app: ncote-web-app
